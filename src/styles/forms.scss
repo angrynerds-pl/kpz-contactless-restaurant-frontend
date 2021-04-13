@@ -30,6 +30,11 @@
       margin-left: 5px;
       background-color: transparent;
       border: none;
+      padding: 3px;
+      &:focus {
+        border: none;
+        outline: none;
+      }
     }
   }
   &__btn {
