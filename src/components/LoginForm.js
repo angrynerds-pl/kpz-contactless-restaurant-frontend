@@ -1,39 +1,44 @@
 import React from 'react';
 import '../styles/forms.scss';
 import { MdLock, MdEmail } from "react-icons/md";
-import { withFormik } from 'formik';
-
+import { withFormik, Form, Field } from 'formik';
+import * as yup from 'yup';
 
 const LoginForm = ({
-    values,
-    handleChange,
-    handleSubmit
+    errors,
+    touched
 }) => {
 
     return (
-        <form className='form' onSubmit={handleSubmit}>
+        <Form className='form'>
             <label className='form__label' htmlFor="email">Enter email:</label>
             <div className="form__input">
                 <MdEmail/>
-                <input type="text" name='email'placeholder='example@domain.com' onChange={handleChange}></input>
+                <Field type="text" name='email'placeholder='example@domain.com'></Field>
             </div>
+            {touched.email && errors.email && <p className='form__error'>{errors.email}</p>}
             <label className='form__label' htmlFor="password">Enter password:</label>
             <div className="form__input">
                 <MdLock/>
-                <input type="password" name='password' placeholder='*********' onChange={handleChange}></input>
+                <Field type="password" name='password' placeholder='*********'></Field>
             </div>
+            {touched.password && errors.password && <p className='form__error'>{errors.password}</p>}
             <button className='form__btn' type='submit'>Log in</button>
-        </form>
+        </Form>
     )
 }
 
 const FormikLoginForm = withFormik({
     mapPropsToValues({email,password}){
         return{
-            email: '',
-            password: '',
+            email: email || '',
+            password: password || '',
         }
     },
+    validationSchema: yup.object().shape({
+        email: yup.string().email('Your email address is not valid!').required('Please enter your email address!'),
+        password: yup.string().required('Please enter your password!').min(8,'Your password need to be at least 8 characters long!'),
+    }),
     handleSubmit(values){
         console.log(values);
     }
