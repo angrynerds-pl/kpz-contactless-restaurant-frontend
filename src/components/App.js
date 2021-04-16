@@ -1,8 +1,8 @@
 import React, {useState} from 'react';
 import { MdAccountCircle } from "react-icons/md";
 import { BrowserRouter as Router, Switch, Link, Route } from 'react-router-dom';
-import FormikRegisterForm from "./RegisterForm";
-import FormikLoginForm from "./LoginForm";
+import RegisterForm from "./RegisterForm";
+import LoginForm from "./LoginForm";
 import '../styles/login-signup-view.scss';
 
 function App() {
@@ -22,10 +22,10 @@ function App() {
           <section>
             <Switch>
               <Route path='/register'>
-                  <FormikRegisterForm/>
+                  <RegisterForm/>
               </Route>
               <Route path='/'>
-                  <FormikLoginForm/>
+                  <LoginForm/>
               </Route>
             </Switch>
           </section>

@@ -3,8 +3,9 @@ import '../styles/forms.scss';
 import { MdLock, MdEmail } from "react-icons/md";
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
+import { withRouter } from 'react-router';
 
-const LoginForm = ({
+const LoginInnerForm = ({
     errors,
     touched
 }) => {
@@ -28,7 +29,7 @@ const LoginForm = ({
     )
 }
 
-const FormikLoginForm = withFormik({
+const LoginForm = withRouter(withFormik({
     mapPropsToValues({email,password}){
         return{
             email: email || '',
@@ -39,9 +40,10 @@ const FormikLoginForm = withFormik({
         email: yup.string().email('Your email address is not valid!').required('Please enter your email address!'),
         password: yup.string().required('Please enter your password!').min(8,'Your password need to be at least 8 characters long!'),
     }),
-    handleSubmit(values){
+    handleSubmit(values, {props}){
         console.log(values);
+        props.history.push('/admin-panel')
     }
-})(LoginForm);
+})(LoginInnerForm));
 
-export default FormikLoginForm;
+export default LoginForm;

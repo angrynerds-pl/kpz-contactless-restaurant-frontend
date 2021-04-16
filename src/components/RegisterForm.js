@@ -2,8 +2,9 @@ import React from 'react';
 import { MdLock, MdEmail, MdAccountCircle } from "react-icons/md";
 import { withFormik, Form, Field } from 'formik';
 import * as yup from 'yup';
+import { withRouter } from 'react-router';
 
-const RegisterForm = ({
+const RegisterInnerForm = ({
     errors,
     touched,
     isSubmiting
@@ -39,7 +40,7 @@ const RegisterForm = ({
         </Form>
     )
 }
-const FormikRegisterForm = withFormik({
+const RegisterForm = withRouter(withFormik({
     mapPropsToValues({username, email,password, confirm_password}){
         return{
             username: username || '',
@@ -52,13 +53,31 @@ const FormikRegisterForm = withFormik({
         username: yup.string().required('Please enter your username!'),
         email: yup.string().email('Your email address is not valid!').required('Please enter your email address!'),
         password: yup.string().required('Please enter your password!').min(8,'Your password need to be at least 8 characters long!'),
-        confirm_password: yup.string().required('Please confirm your password!').min(8,'Your password need to be at least 8 characters long!')
+        confirm_password: yup.string().required('Please confirm your password!').min(8,'Your password need to be at least 8 characters long!').oneOf([yup.ref('password'),null],'Wrong password confirmation! Passwords must match')
     }),
-    handleSubmit(values, { resetForm, setSubmitting }){
-        console.log(values);
+    handleSubmit(values, { resetForm, setSubmitting, props }){
+        const data = {
+            user:{
+                username: values.username,
+                email: values.email,
+                password: values.password 
+            }
+        };
+        const requestData = JSON.stringify(data);
+        console.log(requestData);
+        
+        // const headers = new Headers();
+        // headers.append('Content-Type', 'application/json');
+        // const init = {
+        //     method: 'POST',
+        //     headers: headers,
+        //     body: requestData,
+        // }
+        // fetch('http://localhost:5432/v1/users/2B2E7F75B4E33F1E78D4587FCD289', init);
         resetForm();
         setSubmitting(false);
+        props.history.push('/');
     }
-})(RegisterForm);
+})(RegisterInnerForm));
 
-export default FormikRegisterForm;
+export default RegisterForm;
