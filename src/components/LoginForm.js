@@ -42,7 +42,34 @@ const LoginForm = withRouter(withFormik({
     }),
     handleSubmit(values, {props}){
         console.log(values);
-        props.history.push('/admin-panel')
+        const data = {
+            user:{
+                email: values.email,
+                password: values.password 
+            }
+        };
+        const requestData = JSON.stringify(data);
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        const init = {
+            method: 'POST',
+            headers: headers,
+            body: requestData,
+        }
+        fetch('http://localhost:8585/v1/users/login', init)
+            .then(res => {
+                if(!res.ok){
+                    throw new Error(`HTTP Error with status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data=>{
+                console.log(data);
+                props.history.push('/admin-panel')
+            })
+            .catch(err => {
+                console.log(err);
+            });
     }
 })(LoginInnerForm));
 

@@ -64,16 +64,26 @@ const RegisterForm = withRouter(withFormik({
             }
         };
         const requestData = JSON.stringify(data);
-        console.log(requestData);
-        
-        // const headers = new Headers();
-        // headers.append('Content-Type', 'application/json');
-        // const init = {
-        //     method: 'POST',
-        //     headers: headers,
-        //     body: requestData,
-        // }
-        // fetch('http://localhost:5432/v1/users/2B2E7F75B4E33F1E78D4587FCD289', init);
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json');
+        const init = {
+            method: 'POST',
+            headers: headers,
+            body: requestData,
+        }
+        fetch('http://localhost:8585/v1/users', init)
+            .then(res => {
+                if(!res.ok){
+                    throw new Error(`HTTP Error with status: ${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data=>{
+                console.log(data);
+            })
+            .catch(err => {
+                console.log(err);;
+            });
         resetForm();
         setSubmitting(false);
         props.history.push('/');
