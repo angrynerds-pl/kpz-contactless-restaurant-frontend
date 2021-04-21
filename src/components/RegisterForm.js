@@ -2,7 +2,6 @@ import React from 'react';
 import { MdLock, MdEmail, MdAccountCircle } from "react-icons/md";
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
-import { withRouter } from 'react-router';
 
 
 const validationSchema= yup.object().shape({
