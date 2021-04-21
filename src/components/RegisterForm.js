@@ -2,6 +2,7 @@ import React from 'react';
 import { MdLock, MdEmail, MdAccountCircle } from "react-icons/md";
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
+import {registerUser} from '../api/registerUser';
 
 
 const validationSchema= yup.object().shape({
@@ -21,7 +22,7 @@ const RegisterForm = () => (
                 confirm_password: ''
             }}
             validationSchema = {validationSchema}
-            onSubmit = {(values, { resetForm, setSubmitting, props })=>{
+            onSubmit = {async(values, { resetForm, setSubmitting, props })=>{
                 const data = {
                     user:{
                         username: values.username,
@@ -29,30 +30,15 @@ const RegisterForm = () => (
                         password: values.password 
                     }
                 };
-                const requestData = JSON.stringify(data);
-                const headers = new Headers();
-                headers.append('Content-Type', 'application/json');
-                const init = {
-                    method: 'POST',
-                    headers: headers,
-                    body: requestData,
+                try{
+                    registerUser(data);
+                    resetForm();
+                    setSubmitting(false);
+                    props.history.push('/')
                 }
-                fetch(`http://localhost:8585/v1/users`, init)
-                    .then(res => {
-                        if(!res.ok){
-                            throw new Error(`HTTP Error with status: ${res.status}`);
-                        }
-                        return res.json();
-                    })
-                    .then(data=>{
-                        console.log(data);
-                        resetForm();
-                        setSubmitting(false);
-                        props.history.push('/');
-                    })
-                    .catch(err => {
-                        console.log(err);;
-                    });
+                catch(err){
+                    console.log(err);
+                }
             }}
         >
             {({touched,errors,isSubmitting})=>(

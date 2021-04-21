@@ -3,12 +3,12 @@ import '../styles/forms.scss';
 import { MdLock, MdEmail } from "react-icons/md";
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
+import {loginUser} from '../api/loginUser';
 
 const validationSchema = yup.object().shape({
     email: yup.string().email('Your email address is not valid!').required('Please enter your email address!'),
     password: yup.string().required('Please enter your password!').min(8,'Your password need to be at least 8 characters long!'),
 });
-
 
 const LoginForm = () => (
     <>
@@ -18,37 +18,23 @@ const LoginForm = () => (
                 password: '',
             }}
             validationSchema = {validationSchema}
-            onSubmit = {(values, { resetForm,setSubmitting, props })=>{
+            onSubmit = {async (values, { resetForm,setSubmitting, props })=>{
                 const data = {
                     user:{
                         email: values.email,
                         password: values.password 
                     }
                 };
-                const requestData = JSON.stringify(data);
-                const headers = new Headers();
-                headers.append('Content-Type', 'application/json');
-                const init = {
-                    method: 'POST',
-                    headers: headers,
-                    body: requestData,
+                try{
+                    await loginUser(data);
+                    resetForm();
+                    setSubmitting(false);
+                    props.history.push('/admin-panel')
                 }
-                fetch('http://localhost:8585/v1/users/login', init)
-                    .then(res => {
-                        if(!res.ok){
-                            throw new Error(`HTTP Error with status: ${res.status}`);
-                        }
-                        return res.json();
-                    })
-                    .then(data=>{
-                        console.log(data);
-                        resetForm();
-                        setSubmitting(false);
-                        props.history.push('/admin-panel')
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    });
+                catch(err){
+                    console.log(err);
+                }
+                
             }}
         >
             {({touched, errors, isSubmitting})=>(
