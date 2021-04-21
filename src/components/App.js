@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { MdAccountCircle } from "react-icons/md";
-import { Switch, Link, Route, useLocation } from 'react-router-dom';
+import { Switch, Link, Route, useLocation} from 'react-router-dom';
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import '../styles/login-signup-view.scss';
@@ -13,7 +13,7 @@ function usePageViews(setActiveTab){
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState('')
+  const [activeTab, setActiveTab] = useState('') 
   usePageViews(setActiveTab);
   return (
     <>
@@ -29,7 +29,7 @@ function App() {
           <section>
             <Switch>
               <Route path='/register'>
-                  <RegisterForm/>
+                  <RegisterForm />
               </Route>
               <Route path='/'>
                   <LoginForm/>

@@ -37,7 +37,7 @@ const RegisterForm = () => (
                     headers: headers,
                     body: requestData,
                 }
-                fetch('http://localhost:8585/v1/users', init)
+                fetch(`http://localhost:8585/v1/users`, init)
                     .then(res => {
                         if(!res.ok){
                             throw new Error(`HTTP Error with status: ${res.status}`);
