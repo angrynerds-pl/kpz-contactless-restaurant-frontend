@@ -6,7 +6,7 @@ import LoginForm from "./LoginForm";
 import '../styles/login-signup-view.scss';
 
 function App() {
-  const [SignUpTabActive, setSignUpTabActive] = useState(false)
+  const [activeTab, setActiveTab] = useState('login')
   
   return (
     <Router>
@@ -16,8 +16,8 @@ function App() {
         </header>
         <main className='container'>
           <section className='links'>
-            <button className={!SignUpTabActive ? 'links__btn links__btn--active': 'links__btn'} onClick={()=>setSignUpTabActive(false)}><Link className='anchor' to='/'>Log in</Link></button>
-            <button className={SignUpTabActive ? 'links__btn links__btn--active': 'links__btn'} onClick={()=>setSignUpTabActive(true)}><Link className='anchor' to='/register'>Sign Up</Link></button>
+            <button className={activeTab === 'login' ? 'links__btn links__btn--active': 'links__btn'} onClick={()=>setActiveTab('login')}><Link className='anchor' to='/'>Log in</Link></button>
+            <button className={activeTab === 'register' ? 'links__btn links__btn--active': 'links__btn'} onClick={()=>setActiveTab('register')}><Link className='anchor' to='/register'>Sign Up</Link></button>
           </section>
           <section>
             <Switch>
