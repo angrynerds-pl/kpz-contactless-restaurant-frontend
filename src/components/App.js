@@ -31,6 +31,9 @@ function App() {
               <Route path='/register'>
                   <RegisterForm />
               </Route>
+              <Route path='/login'>
+                  <LoginForm msg='Account created! Feel free to log in!'/>
+              </Route>
               <Route path='/'>
                   <LoginForm/>
               </Route>
