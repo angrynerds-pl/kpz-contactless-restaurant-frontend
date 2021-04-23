@@ -1,4 +1,4 @@
-export async function loginUser(data) {
+export async function registerUser(data) {
     const requestData = JSON.stringify(data);
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
@@ -7,7 +7,7 @@ export async function loginUser(data) {
         headers: headers,
         body: requestData,
     }
-    const url = `${process.env.REACT_APP_API_URL}users`;
+    const url = `${process.env.REACT_APP_API_URL}/users`;
     const response = await fetch(url, init);
     if(!response.ok){
         throw new Error(`HTTP Error with status: ${response.status}`);
