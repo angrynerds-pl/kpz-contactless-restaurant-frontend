@@ -7,10 +7,13 @@ export async function loginUser(data) {
         headers: headers,
         body: requestData,
     }
-    const url = `${process.env.REACT_APP_API_URL}users/login`;
+    const url = `${process.env.REACT_APP_API_URL}/users/login`;
     const response = await fetch(url, init);
-    if(!response.ok){
-        throw new Error(`HTTP Error with status: ${response.status}`);
-    }
-    return await response.json();
+    if (response.ok){
+        return await response.json();
+    }else if (response.status >= 500) {
+        throw new Error(`There was an server error (status: ${response.status}). Try again later!`)
+    }else if (response.status >= 400){
+        throw new Error(`Something went wrong! There was a client-side error. Status code: ${response.status}. `)
+    };
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useState} from 'react';
 import { MdLock, MdEmail, MdAccountCircle } from "react-icons/md";
 import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
@@ -16,6 +16,7 @@ const validationSchema= yup.object().shape({
 const RegisterForm = () => {
 
     const history = useHistory();
+    const [errorMsg, setErrorMsg] = useState();
 
     return (
         <>
@@ -35,21 +36,22 @@ const RegisterForm = () => {
                             password: values.password 
                         }
                     };
-                    try{
-                        registerUser(data)
-                            .then(()=>{
-                                resetForm();
-                                setSubmitting(false);
-                                history.push('/login');
-                            });
-                    }
-                    catch(err){
-                        console.log(err);
-                    }
+                    
+                    registerUser(data)
+                        .then(()=>{
+                            resetForm();
+                            setSubmitting(false);
+                            history.push('/login');
+                        })
+                        .catch(err=>{
+                            setErrorMsg(err.message);
+                        })
+                    
                 }}
             >
                 {({touched,errors,isSubmitting})=>(
                     <Form className='form' >
+                    {errorMsg && <p className='form__request_error'>{errorMsg}</p>}
                     <label className='form__label' htmlFor="email">Enter your email address</label>
                     <div className='form__input'>
                         <MdEmail/>
