@@ -9,7 +9,7 @@ export async function registerUser(data) {
         headers: headers,
         body: requestData,
     }
-    const url = `${process.env.REACT_APP_API_URL}/users`;
+    const url = `${process.env.REACT_APP_API_URL}/auth/owner`;
     const response = await fetch(url, init);
     return await handleResponse(response);
 }
