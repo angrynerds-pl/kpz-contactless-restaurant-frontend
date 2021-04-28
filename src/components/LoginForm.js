@@ -35,7 +35,7 @@ const LoginForm = ({msg}) => {
                         .then(res => {
                             //save res to global state (Redux)
                             resetForm();
-                            setSubmitting()
+                            setSubmitting(false);
                             history.push('/admin-panel')
                         })
                         .catch(err => {
