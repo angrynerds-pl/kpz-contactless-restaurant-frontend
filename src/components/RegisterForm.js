@@ -36,7 +36,6 @@ const RegisterForm = () => {
                             username: values.username,
                         }
                     };
-                    
                     registerUser(data)
                         .then(()=>{
                             resetForm();

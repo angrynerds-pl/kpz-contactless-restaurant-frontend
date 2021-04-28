@@ -33,12 +33,12 @@ const LoginForm = ({msg}) => {
                             email: values.email,
                             password: values.password 
                         }
-                    };  
-                    
+                    }; 
+                    console.log(JSON.stringify(userData));
                     loginUser(userData)
                     .then(res => {
                         //save res to global state (Redux)
-                        dispatch(logIn());
+                        dispatch(logIn(res.token));
                         //
                         resetForm();
                         setSubmitting()

@@ -1,5 +1,6 @@
-export const logIn = () => {
+export const logIn = (token) => {
     return {
-        type: 'LOG_IN'
+        type: 'LOG_IN',
+        token: token,
     }
 }
