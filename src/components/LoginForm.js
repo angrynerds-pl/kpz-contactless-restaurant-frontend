@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{ useState} from 'react';
 import '../styles/forms.scss';
 import { MdLock, MdEmail } from "react-icons/md";
 import { Formik, Form, Field } from 'formik';
@@ -14,6 +14,7 @@ const validationSchema = yup.object().shape({
 const LoginForm = ({msg}) => {
 
     const history = useHistory();
+    const [errorMsg, setErrorMsg] = useState();
 
     return(
         <>
@@ -24,29 +25,28 @@ const LoginForm = ({msg}) => {
                 }}
                 validationSchema = {validationSchema}
                 onSubmit = {async (values, { resetForm,setSubmitting, props })=>{
-                    const data = {
+                    const userData = {
                         user:{
                             email: values.email,
                             password: values.password 
                         }
-                    };
-                    try{
-                        loginUser(data)
-                            .then(()=>{
+                    };            
+                    loginUser(userData)
+                        .then(res => {
+                            //save res to global state (Redux)
                             resetForm();
                             setSubmitting(false);
                             history.push('/admin-panel')
-                            });
-                    }
-                    catch(err){
-                        console.log(err);
-                    }
-                    
+                        })
+                        .catch(err => {
+                            setErrorMsg(err.message)
+                        });                
                 }}
             >
                 {({touched, errors, isSubmitting})=>(
                     <Form className='form'>
                     {msg && <p className='form__msg'>{msg}</p>}
+                    {errorMsg && <p className='form__request_error'>{errorMsg}</p>}
                     <label className='form__label' htmlFor="email">Enter email:</label>
                     <div className="form__input">
                         <MdEmail/>
