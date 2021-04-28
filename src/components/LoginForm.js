@@ -34,7 +34,6 @@ const LoginForm = ({msg}) => {
                             password: values.password 
                         }
                     }; 
-                    console.log(JSON.stringify(userData));
                     loginUser(userData)
                     .then(res => {
                         //save res to global state (Redux)
