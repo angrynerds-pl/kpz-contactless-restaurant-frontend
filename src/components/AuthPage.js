@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { MdAccountCircle } from "react-icons/md";
-import { Switch, Link, Route, useLocation} from 'react-router-dom';
+import { Switch, Link, Route, useLocation, useRouteMatch} from 'react-router-dom';
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
 import '../styles/login-signup-view.scss';
@@ -17,6 +17,7 @@ const AuthPage =() => {
   const [activeTab, setActiveTab] = useState(''); 
   usePageViews(setActiveTab);
 
+  const {url} = useRouteMatch();
 
   return (
     <>
@@ -26,16 +27,16 @@ const AuthPage =() => {
         </header>
         <main className='container'>
           <section className='links'>
-            <button className={activeTab === '/auth' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/auth'>Log in</Link></button>
-            <button className={activeTab === '/auth/register' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/auth/register'>Sign Up</Link></button>
+            <button className={activeTab === `${url}` ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to={`${url}`}>Log in</Link></button>
+            <button className={activeTab === `${url}/register` ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to={`${url}/register`}>Sign Up</Link></button>
           </section>
           <section>
             <Switch>
-              <Route path='/auth/register' component={RegisterForm}/>
-              <Route path='/auth/login'>
+              <Route path={`${url}/register`} component={RegisterForm}/>
+              <Route path={`${url}/login`}>
                   <LoginForm msg='Account created! Feel free to log in!'/>
               </Route>
-              <Route path='/auth' component={LoginForm}/>
+              <Route path={`${url}`} component={LoginForm}/>
             </Switch>
           </section>
         </main>             

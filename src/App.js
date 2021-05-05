@@ -8,7 +8,7 @@ const App = () => {
     return (
         <div className='app'>
             <Switch>
-                <Route path='/auth' exact component={AuthPage}/>
+                <Route path='/auth' component={AuthPage}/>
                 <Route path='/admin' exact component={AdminPage}/>
                 <Route path='/' exact>
                     <Redirect to='/auth'></Redirect>
