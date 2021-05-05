@@ -31,12 +31,11 @@ const RegisterForm = () => {
                 onSubmit = {async(values, { resetForm, setSubmitting}, props)=>{
                     const data = {
                         user:{
-                            username: values.username,
                             email: values.email,
-                            password: values.password 
+                            password: values.password, 
+                            username: values.username,
                         }
                     };
-                    
                     registerUser(data)
                         .then(()=>{
                             resetForm();

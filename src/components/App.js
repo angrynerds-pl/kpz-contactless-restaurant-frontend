@@ -13,8 +13,11 @@ function usePageViews(setActiveTab){
 }
 
 function App() {
-  const [activeTab, setActiveTab] = useState('') 
+
+  const [activeTab, setActiveTab] = useState(''); 
   usePageViews(setActiveTab);
+
+
   return (
     <>
       <div className='app'>
