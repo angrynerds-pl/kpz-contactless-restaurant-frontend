@@ -41,7 +41,7 @@ const LoginForm = ({msg}) => {
                         //
                         resetForm();
                         setSubmitting()
-                        history.push('/admin-panel')
+                        history.push('/admin')
                     })
                     .catch(err => {
                         setErrorMsg(err.message)

@@ -9,10 +9,10 @@ function usePageViews(setActiveTab){
   let location = useLocation();
   useEffect(() => {
     setActiveTab(location.pathname);
-  }, [location])
+  }, [location])// eslint-disable-line react-hooks/exhaustive-deps
 }
 
-function App() {
+const AuthPage =() => {
 
   const [activeTab, setActiveTab] = useState(''); 
   usePageViews(setActiveTab);
@@ -20,26 +20,22 @@ function App() {
 
   return (
     <>
-      <div className='app'>
+      <div className='auth'>
         <header className='head'>
           <MdAccountCircle className='head__icon'/>
         </header>
         <main className='container'>
           <section className='links'>
-            <button className={activeTab === '/' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/'>Log in</Link></button>
-            <button className={activeTab === '/register' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/register'>Sign Up</Link></button>
+            <button className={activeTab === '/auth' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/auth'>Log in</Link></button>
+            <button className={activeTab === '/auth/register' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/auth/register'>Sign Up</Link></button>
           </section>
           <section>
             <Switch>
-              <Route path='/register'>
-                  <RegisterForm />
-              </Route>
-              <Route path='/login'>
+              <Route path='/auth/register' component={RegisterForm}/>
+              <Route path='/auth/login'>
                   <LoginForm msg='Account created! Feel free to log in!'/>
               </Route>
-              <Route path='/'>
-                  <LoginForm/>
-              </Route>
+              <Route path='/auth' component={LoginForm}/>
             </Switch>
           </section>
         </main>             
@@ -49,4 +45,4 @@ function App() {
   );
 }
 
-export default App;
+export default AuthPage;
