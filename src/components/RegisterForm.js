@@ -40,7 +40,7 @@ const RegisterForm = () => {
                         .then(()=>{
                             resetForm();
                             setSubmitting(false);
-                            history.push('/login');
+                            history.push('/auth/login');
                         })
                         .catch(err=>{
                             setErrorMsg(err.message);
