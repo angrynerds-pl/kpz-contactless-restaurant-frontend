@@ -5,6 +5,8 @@ import { Formik, Form, Field } from 'formik';
 import * as yup from 'yup';
 import {loginUser} from '../api/loginUser';
 import {useHistory} from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { logIn } from '../state/actions';
 
 const validationSchema = yup.object().shape({
     email: yup.string().email('Your email address is not valid!').required('Please enter your email address!'),
@@ -15,6 +17,7 @@ const LoginForm = ({msg}) => {
 
     const history = useHistory();
     const [errorMsg, setErrorMsg] = useState();
+    const dispatch = useDispatch();
 
     return(
         <>
@@ -30,17 +33,19 @@ const LoginForm = ({msg}) => {
                             email: values.email,
                             password: values.password 
                         }
-                    };            
+                    }; 
                     loginUser(userData)
-                        .then(res => {
-                            //save res to global state (Redux)
-                            resetForm();
-                            setSubmitting(false);
-                            history.push('/admin-panel')
-                        })
-                        .catch(err => {
-                            setErrorMsg(err.message)
-                        });                
+                    .then(res => {
+                        //save res to global state (Redux)
+                        dispatch(logIn(res.token));
+                        //
+                        resetForm();
+                        setSubmitting()
+                        history.push('/admin')
+                    })
+                    .catch(err => {
+                        setErrorMsg(err.message)
+                    });                
                 }}
             >
                 {({touched, errors, isSubmitting})=>(
