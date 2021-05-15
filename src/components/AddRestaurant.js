@@ -1,62 +1,32 @@
-import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom'
 
-const AddRestaurant = (props) => {
+import NewRestaurantForm from "./NewRestaurantForm"
 
-    const [restaurant, setRestauracja] = useState([
-        {
-            name: '',
-            street: '',
-            streetNr: 0,
-            city: '',
-        }
-    ])
+import '../styles/new-restaurant-form.scss'
 
-    const {id, name, street, streetNr, city} = restaurant
+const AddRestaurant = () => {
+    const history = useHistory()
 
-    const handleName = (e) => {
-        setRestauracja({
-            name: e.target.value
+    const addRestaurantHandler = (restaurantData) => {
+        fetch(
+            'https://projekt-zespolowy-56cfe-default-rtdb.firebaseio.com/restaurants.json',
+            {
+                method: 'POST',
+                body: JSON.stringify(restaurantData),
+                headers: {
+                    'Content-Type': 'application/json'
+                }
+            }
+        ).then(() => {
+            history.replace('/admin') 
         })
-    }
-
-    const handleStreet = (e) => {
-        setRestauracja({
-            street: e.target.value
-        })
-    }
-
-    const handleStreetNr = (e) => {
-        setRestauracja({
-            streetNr: e.target.value
-        })
-    }
-
-    const handleCity = (e) => {
-        setRestauracja({
-            city: e.target.value
-        })
-    }
-
-    const handleClick = () => {
-        const add = props.add( name, street, streetNr, city)
-        if (add === true) {
-            setRestauracja({
-                name: '',
-                street: '',
-                stretNr: 0,
-                city: '',
-            })
-        }
     }
 
     return (
-        <div>
-            <input type="text" value={name} onChange={handleName} placeholder="Nazwa restauracji"/>
-            <input type="text" value={street} onChange={handleStreet} placeholder="Nazwa ulicy"/>
-            <input type="number" value={streetNr} onChange={handleStreetNr} placeholder="nr Budynku"/>
-            <input type="text" value={city} onChange={handleCity} placeholder="Nazwa miejscowości"/>
-            <button onClick={handleClick}>Dodaj restaurację</button>
-        </div>
+        <section className="form">
+            <h1>Dodaj nową restaurację</h1>
+            <NewRestaurantForm onAddMeetup={addRestaurantHandler} />
+        </section>
     );
 }
  

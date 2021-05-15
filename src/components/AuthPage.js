@@ -1,16 +1,8 @@
 import React, {useState, useEffect} from 'react';
-<<<<<<< HEAD:src/components/App.js
-// import { MdAccountCircle } from "react-icons/md";
-import { Switch, Link, Route, useLocation, Router} from 'react-router-dom';
-import Page from './Page'
-// import HeaderAdminPanel from "./HeaderAdminPanel"
-import Header from "./Header"
-=======
 import { MdAccountCircle } from "react-icons/md";
 import { Switch, Link, Route, useLocation, useRouteMatch} from 'react-router-dom';
 import RegisterForm from "./RegisterForm";
 import LoginForm from "./LoginForm";
->>>>>>> origin/develop:src/components/AuthPage.js
 import '../styles/login-signup-view.scss';
 
 function usePageViews(setActiveTab){
@@ -28,38 +20,6 @@ const AuthPage =() => {
   const {url} = useRouteMatch();
 
   return (
-<<<<<<< HEAD:src/components/App.js
-      <Router>
-        <div className='app'>
-          <header className='head'>
-            {<Header/>}
-          </header>
-          <main className='container'>
-              <Switch>
-                <Route path="/" exact>
-                  <section className='links'>
-                    <button className={activeTab === '/' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/'>Log in</Link></button>
-                    <button className={activeTab === '/register' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/register'>Sign Up</Link></button>
-                    </section>
-                </Route>
-                <Route path="/register">
-                  <section className='links'>
-                    <button className={activeTab === '/' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/'>Log in</Link></button>
-                    <button className={activeTab === '/register' ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to='/register'>Sign Up</Link></button>
-                  </section>
-                </Route>
-                <Route path="/admin-panel">
-                  {null}
-                </Route>
-              </Switch>
-            <section>
-              {<Page/>}
-            </section>
-          </main>             
-          <footer>Copywrites AngryNerds &#169; Konferencja Projektów Zespołowych Wydział Elektroniki Politechniki Wrocławskiej</footer>
-        </div>
-      </Router>
-=======
     <>
       <div className='auth'>
         <header className='head'>
@@ -83,7 +43,6 @@ const AuthPage =() => {
         <footer>Copywrites AngryNerds &#169; Konferencja Projektów Zespołowych Wydział Elektroniki Politechniki Wrocławskiej</footer>
       </div>
     </>
->>>>>>> origin/develop:src/components/AuthPage.js
   );
 }
 

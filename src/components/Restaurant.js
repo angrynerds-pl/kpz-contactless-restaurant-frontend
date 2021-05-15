@@ -1,18 +1,21 @@
-import React from 'react';
+import '../styles/restaurant-list.scss'
 
-const Restaurant = (props,{ restaurant}) => {
-
-    const {id} = props
+const Restaurant = (props) => {
 
     return (
-        <>
-            <li>
-                <h2>{props.restaurant.name}</h2>
-                <p>{`ul. ${props.restaurant.street} ${props.restaurant.streetNr}, ${props.restaurant.city}`}</p>
-                <button onClick={() => props.edit(id)}>Edytuj restauracje</button>
-                <button onClick={() => props.delete(id)}>Usuń restauracje</button>
-            </li>
-        </>
+        <li className="all-restaurants__restaurant">
+            <div>
+                <img className="all-restaurants__resimage" src='../image/1.jpg' alt={props.name} />   
+            </div>
+            <div className="all-restaurants__resdata">
+                <h2>{props.name}</h2>
+                <address>{`ul. ${props.street} ${props.streetNr}, ${props.city}`}</address>
+            </div>
+            <div className="all-restaurants__buttons">
+                <button className="all-restaurants__editdata">Edytuj dane restauracji</button> 
+                <button className="all-restaurants__editmenu">Edytuj menu restauracji</button> 
+            </div>
+        </li>
     );
 }
  
