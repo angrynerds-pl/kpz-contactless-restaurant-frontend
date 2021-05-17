@@ -1,4 +1,4 @@
-@import "./abstracts/colors.scss";
+@import './abstracts/colors.scss';
 
 .all-restaurants {
   background-color: $bg-primary;
@@ -8,7 +8,7 @@
   h1 {
     font-style: normal;
     font-weight: bold;
-    font-size: 36px;
+    font-size: 1.5rem;
     color: $font-main;
     margin-top: 50px;
     margin-left: 50px;
@@ -22,8 +22,8 @@
     flex-flow: column;
     align-items: center;
     justify-content: center;
-    width: 242px;
-    height: 420px;
+    width: 200px;
+    max-height: 300px;
     background-color: #c4c4c4;
     border-radius: 10px;
     margin-left: 50px;
@@ -41,60 +41,54 @@
     height: 200px;
     color: $bg-primary;
   }
-  &__restaurant {
+  .restaurant {
     display: flex;
     flex-flow: column;
     align-items: center;
-    justify-content: center;
-    width: 242px;
-    height: 420px;
+    justify-content: space-between;
+    padding: 20px 0;
+    width: 200px;
+    height: 300px;
     background-color: #c4c4c4;
     border-radius: 10px;
-    margin-left: 50px;
-    margin-top: 50px;
-    h2 {
-      margin-top: 60px;
+    margin: 50px 0 0 50px;
+    &__image {
+      border-radius: 50%;
+      min-width: 80px;
+      min-height: 80px;
       text-align: center;
-      width: 240px;
+    }
+    &__name {
+      text-align: center;
       color: #000000;
       font-weight: bold;
-      font-size: 24px;
+      font-size: 1.2rem;
     }
-    address {
-      margin-top: 30px;
+    &__address {
       text-align: center;
-      font-style: normal;
-      font-weight: normal;
       font-size: 14px;
       line-height: 16px;
       color: #ef6351;
     }
-  }
-  button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-top: 20px;
-    width: 185px;
-    height: 40px;
-    border-radius: 10px;
-  }
-  &__buttons {
-    margin-top: 30px;
-  }
-  &__editdata {
-    background: $bg-scnd;
-    font-weight: bold;
-    font-size: 14px;
-    color: #37323e;
-  }
-  &__editmenu {
-    background-color: $details-first;
-    font-weight: bold;
-    font-size: 14px;
-    color: #bfbdc1;
-  }
-  &__resimage {
-    margin-top: 30px;
+    &__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      height: 40px;
+      border-radius: 10px;
+    }
+    .edit_data {
+      background: $bg-scnd;
+      font-weight: bold;
+      font-size: 14px;
+      color: #37323e;
+    }
+    .edit_menu {
+      background-color: $details-first;
+      font-weight: bold;
+      font-size: 14px;
+      color: #bfbdc1;
+    }
   }
 }
