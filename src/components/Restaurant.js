@@ -5,7 +5,7 @@ const Restaurant = (props) => {
     return (
         <li className="all-restaurants__restaurant restaurant">
             
-            <img className="restaurant__image" src='../image/1.jpg' alt={`${props.name}-logo`} />   
+            <img className="restaurant__image" src='./src/image/exmpl-logo.jpg' alt={`${props.name}-logo`} />   
             <h2 className='restaurant__name'>{props.name}</h2>
             <address className='restaurant__address'>{`ul. ${props.street} ${props.streetNr}, ${props.city}`}</address>
             <button className="restaurant__btn edit_data">Edytuj dane restauracji</button> 

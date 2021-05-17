@@ -1,9 +1,8 @@
 import {useRef} from 'react'
 
 
-const NewMeetupForm = (props) => {
+const NewMeetupForm = ({onAddRestaurant}) => {
     const nameInputRef = useRef()
-    // const imageInputRef = useRef()
     const streetInputRef = useRef()
     const streetNrInputRef = useRef()
     const cityInputRef = useRef()
@@ -11,29 +10,23 @@ const NewMeetupForm = (props) => {
     const submitHandler = (event) => {
         event.preventDefault() 
 
-        const enteredname = nameInputRef.current.value 
-        // const enteredImage = imageInputRef.current.value
+        const enteredName = nameInputRef.current.value 
         const enteredStreet = streetInputRef.current.value
         const enteredStreetNr = streetNrInputRef.current.value
-        const enteredcity = cityInputRef.current.value
+        const enteredCity = cityInputRef.current.value
 
         const restaurantData = {
-            name: enteredname,
-            // image: enteredImage,
+            name: enteredName,
             street: enteredStreet,
             streetNr: enteredStreetNr,
-            city: enteredcity,
+            city: enteredCity,
         }
-
-        props.onAddRestaurant(restaurantData)
+        onAddRestaurant(restaurantData);
     }
 
     return (
             <form onSubmit={submitHandler}>
-                    {/* <div>
-                        <label htmlFor="image">Meetup Title</label>
-                        <input type="url" required id="image" ref={imageInputRef} />
-                    </div> */}
+                    
                     <div className="form__label">
                         <label htmlFor="name">Nazwa lokalu</label>
                         <input type="text" required id="name" ref={nameInputRef} />
