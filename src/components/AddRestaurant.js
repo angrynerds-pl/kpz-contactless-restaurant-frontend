@@ -23,7 +23,7 @@ const AddRestaurant = () => {
     }
 
     return (
-        <section className="form">
+        <section className="add-form">
             <h1>Dodaj nową restaurację</h1>
             <NewRestaurantForm onAddMeetup={addRestaurantHandler} />
         </section>
