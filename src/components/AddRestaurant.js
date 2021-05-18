@@ -1,31 +1,30 @@
 import {useHistory} from 'react-router-dom'
-
 import NewRestaurantForm from "./NewRestaurantForm"
-
 import '../styles/new-restaurant-form.scss'
+import {createRestaurant} from '../api/createRestaurant';
+import { useState } from 'react';
 
 const AddRestaurant = () => {
-    const history = useHistory()
+    const history = useHistory();
+    const [addError, setAddError] = useState(null);
 
     const addRestaurantHandler = (restaurantData) => {
-        fetch(
-            'https://projekt-zespolowy-56cfe-default-rtdb.firebaseio.com/restaurants.json',
-            {
-                method: 'POST',
-                body: JSON.stringify(restaurantData),
-                headers: {
-                    'Content-Type': 'application/json'
-                }
-            }
-        ).then(() => {
-            history.replace('/admin') 
-        })
+        console.log(restaurantData);
+        createRestaurant(restaurantData)
+            .then(res=>{
+                console.log(res);
+                // history.push('/admin');
+            })
+            .catch(err=>{
+                console.log(err);
+                setAddError(err);
+            });
     }
 
     return (
         <section className="add-form">
-            <h1>Dodaj nową restaurację</h1>
-            <NewRestaurantForm onAddMeetup={addRestaurantHandler} />
+            <h1 className='add-form__title'>Add Restaurant</h1>
+            <NewRestaurantForm onAddRestaurant={addRestaurantHandler} err={addError}/>
         </section>
     );
 }
