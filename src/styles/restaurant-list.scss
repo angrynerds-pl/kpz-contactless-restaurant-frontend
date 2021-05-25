@@ -30,6 +30,7 @@
     margin-top: 50px;
     button {
       margin-top: 20px;
+      margin-bottom: 20px;
       width: 185px;
       height: 40px;
       background: $bg-scnd;
@@ -54,15 +55,21 @@
     margin: 50px 0 0 50px;
     &__image {
       border-radius: 50%;
-      min-width: 80px;
-      min-height: 80px;
+      width: 100px;
+      height: 100px;
       text-align: center;
     }
     &__name {
       text-align: center;
-      color: #000000;
+      color: $font-scnd;
       font-weight: bold;
       font-size: 1.2rem;
+    }
+    &__desc {
+      text-align: center;
+      color: $font-scnd;
+      font-weight: bold;
+      font-size: 0.8rem;
     }
     &__address {
       text-align: center;

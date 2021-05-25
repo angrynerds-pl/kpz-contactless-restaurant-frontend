@@ -29,12 +29,16 @@
     &__label {
       margin-top: 5px;
       color: $font-scnd;
+      display: flex;
+      flex-flow: column;
+      align-items: center;
     }
     &__error {
       margin: 5px;
       color: $font-error;
     }
-    input[type='text'] {
+    input[type='text'],
+    textarea {
       margin-top: 2px;
       border: none;
       background-color: white;
@@ -43,10 +47,6 @@
       font-size: 1em;
       border-radius: 10px;
       text-align: center;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: flex-start;
     }
     button {
       margin-top: 20px;

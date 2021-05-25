@@ -4,25 +4,21 @@ import {useRef} from 'react'
 const NewRestaurantForm = ({onAddRestaurant,error}) => {
     const nameInputRef = useRef()
     const streetInputRef = useRef()
-    const postalCodeInputRef = useRef()
+    const descInputRef = useRef()
     const cityInputRef = useRef()
 
     const submitHandler = (e) => {
         e.preventDefault(); 
-        const enteredName = nameInputRef.current.value 
-        const enteredStreet = streetInputRef.current.value
-        const enteredPostalCode = postalCodeInputRef.current.value
-        const enteredCity = cityInputRef.current.value
+        const enteredName = nameInputRef.current.value;
+        const enteredStreet = streetInputRef.current.value;
+        const enteredCity = cityInputRef.current.value;
+        const enteredDesc = descInputRef.current.value;
 
         const restaurantData = {
             restaurant:{
-                address: {
-                    address_line_1: enteredStreet,
-                    address_line_2: '',
-                    postalCode: enteredPostalCode,
-                    city: enteredCity,
-                },
-                description: 'Opis',
+                address: enteredStreet,
+                city: enteredCity,
+                description: enteredDesc,
                 name: enteredName,
             }
            
@@ -42,12 +38,12 @@ const NewRestaurantForm = ({onAddRestaurant,error}) => {
                         <input type="text" required id="street" ref={streetInputRef} />
                     </div>
                     <div className="form__label">
-                        <label htmlFor="postalCode">Postal Code</label>
-                        <input type="text" required id="postalCode" ref={postalCodeInputRef} />
-                    </div>
-                    <div className="form__label">
                         <label htmlFor="city">City</label>
                         <input type="text" id="city"  ref={cityInputRef} />
+                    </div>
+                    <div className="form__label">
+                        <label htmlFor="desc">Short restaurant description</label>
+                        <textarea rows='3' cols='20' type="text" required id="desc" ref={descInputRef} />
                     </div>
                     {error ? <p className='form__error'>{error}</p> : ''}
                     <button>Create Restaurant</button>

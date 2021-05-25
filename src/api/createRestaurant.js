@@ -9,7 +9,7 @@ export async function createRestaurant(restaurant) {
         headers: headers,
         body: requestData,
     }
-    const url = `${process.env.REACT_APP_API_URL}/users/restaurants/`;
+    const url = `${process.env.REACT_APP_API_URL}/users/restaurants`;
     const response = await fetch(url, init);
     return await handleResponse(response);
 }

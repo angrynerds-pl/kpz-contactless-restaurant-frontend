@@ -1,24 +1,17 @@
 import {useHistory} from 'react-router-dom'
 import NewRestaurantForm from "./NewRestaurantForm"
-import '../styles/new-restaurant-form.scss'
-import {createRestaurant} from '../api/createRestaurant';
+import '../styles/new-restaurant-form.scss';
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addRestaurant }from '../state/actions/index';
 
 const AddRestaurant = () => {
     const history = useHistory();
     const [addError, setAddError] = useState(null);
-
+    const dispatchAddRestaurant = useDispatch();
     const addRestaurantHandler = (restaurantData) => {
-        console.log(restaurantData);
-        createRestaurant(restaurantData)
-            .then(res=>{
-                console.log(res);
-                // history.push('/admin');
-            })
-            .catch(err=>{
-                console.log(err);
-                setAddError(err);
-            });
+        dispatchAddRestaurant(addRestaurant(restaurantData));
+        history.push('/admin')
     }
 
     return (
