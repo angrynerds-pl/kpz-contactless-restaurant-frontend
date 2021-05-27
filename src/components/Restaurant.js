@@ -1,7 +1,7 @@
 import '../styles/restaurant-list.scss'
 
-const Restaurant = ({image,name,address,city,desc}) => {
-    console.log(name,address,city,desc);
+const Restaurant = ({image,name,address,city,desc,handleEditMenuClick}) => {
+    
     return (
         <li className="all-restaurants__restaurant restaurant">
             
@@ -10,7 +10,7 @@ const Restaurant = ({image,name,address,city,desc}) => {
             <address className='restaurant__address'>{`ul. ${address}, ${city}`}</address>
             <p className='restaurant__desc'>{desc}</p>
             <button className="restaurant__btn edit_data">Edytuj dane restauracji</button> 
-            <button className="restaurant__btn edit_menu">Edytuj menu restauracji</button> 
+            <button className="restaurant__btn edit_menu" onClick={handleEditMenuClick}>Edytuj menu restauracji</button> 
             
         </li>
     );

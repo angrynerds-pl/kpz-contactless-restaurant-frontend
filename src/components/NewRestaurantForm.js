@@ -1,4 +1,5 @@
-import {useRef} from 'react'
+import {useRef} from 'react';
+import {v4 as uuid} from 'uuid';
 
 
 const NewRestaurantForm = ({onAddRestaurant,error}) => {
@@ -16,10 +17,12 @@ const NewRestaurantForm = ({onAddRestaurant,error}) => {
 
         const restaurantData = {
             restaurant:{
+                id: uuid(),
                 address: enteredStreet,
                 city: enteredCity,
                 description: enteredDesc,
                 name: enteredName,
+                menu: [],
             }
            
         }

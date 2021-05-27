@@ -32,15 +32,14 @@ const AllRestaurants = () => {
         // })
         setTimeout(()=>{
             setLoadedRestaurants(store.getState().addRestaurantReducer.restaurants);
-            console.log(loadedRestaurants);
             setIsLoading(false);
-        },2000)
+        },1000)
 
     }, [loadedRestaurants,store])
 
     if (isLoading){
         return (
-            <section>
+            <section className="all-restaurants">
                 <p>Loading...</p>
             </section>
         )
