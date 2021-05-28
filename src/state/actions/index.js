@@ -10,3 +10,9 @@ export const addRestaurant = (restaurant) => {
         restaurant: restaurant,
     }
 }
+export const editRestaurant = (restaurant) => {
+    return {
+        type: 'EDIT_RESTAURANT',
+        restaurant: restaurant,
+    }
+}

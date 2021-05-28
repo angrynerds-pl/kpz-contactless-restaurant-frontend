@@ -9,12 +9,12 @@ const RestaurantList = ({restaurants}) => {
         <ul className="all-restaurants__list">
             {restaurants.map(restaurant => (
             <Restaurant 
-                key={restaurant.restaurant.name}
+                key={restaurant.name}
                 image={restaurantLogo} 
-                name={restaurant.restaurant.name} 
-                address={restaurant.restaurant.address}
-                city={restaurant.restaurant.city} 
-                desc={restaurant.restaurant.description}
+                name={restaurant.name} 
+                address={restaurant.address}
+                city={restaurant.city} 
+                desc={restaurant.description}
             />))}
             <li className="all-restaurants__addrestaurant">
                     <IoAddCircle className="all-restaurants__icon" />

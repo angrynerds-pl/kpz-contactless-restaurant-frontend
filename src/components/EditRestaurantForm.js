@@ -1,8 +1,12 @@
-import {useRef} from 'react'
-import {v4 as uuid} from 'uuid'
+import React, {useRef} from 'react';
+import {useStore} from 'react-redux'
 
+const EditRestaurantForm = ({onEditRestaurant,error,id}) => {
 
-const NewRestaurantForm = ({onAddRestaurant,error}) => {
+    const store = useStore()
+    let restaurant = store.getState().addRestaurantReducer.restaurants.filter(obj => {
+        return obj.id === id;
+    })
     const nameInputRef = useRef()
     const streetInputRef = useRef()
     const descInputRef = useRef()
@@ -14,15 +18,15 @@ const NewRestaurantForm = ({onAddRestaurant,error}) => {
         const enteredStreet = streetInputRef.current.value;
         const enteredCity = cityInputRef.current.value;
         const enteredDesc = descInputRef.current.value;
-
-        const restaurantData = {
-                id: uuid(),
-                address: enteredStreet,
-                city: enteredCity,
-                description: enteredDesc,
-                name: enteredName, 
+ 
+        restaurant = {
+            id: id,
+            address: enteredStreet,
+            city: enteredCity,
+            description: enteredDesc,
+            name: enteredName,
         }
-        onAddRestaurant(restaurantData);
+        onEditRestaurant(restaurant);
     }
 
     return (
@@ -45,10 +49,10 @@ const NewRestaurantForm = ({onAddRestaurant,error}) => {
                         <textarea rows='3' cols='20' type="text" required id="desc" ref={descInputRef} />
                     </div>
                     {error ? <p className='form__error'>{error}</p> : ''}
-                    <button>Create Restaurant</button>
-                    
+                    <button>Edit Restaurant</button>
+
             </form>
     );
 }
  
-export default NewRestaurantForm;
+export default EditRestaurantForm;

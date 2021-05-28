@@ -32,7 +32,7 @@ const AllRestaurants = () => {
         // })
         setTimeout(()=>{
             setLoadedRestaurants(store.getState().addRestaurantReducer.restaurants);
-            console.log(loadedRestaurants);
+            // console.log(loadedRestaurants);
             setIsLoading(false);
         },2000)
 
