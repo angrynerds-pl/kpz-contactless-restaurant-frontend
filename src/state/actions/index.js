@@ -16,3 +16,17 @@ export const editRestaurant = (restaurant) => {
         restaurant: restaurant,
     }
 }
+export const addMenuPos = (restaurantId,menuPos) => {
+    return {
+        type: 'ADD_POS',
+        restaurantId: restaurantId,
+        menuPos: menuPos,
+    }
+}
+export const deleteMenuPos = (restaurantId,positionId) => {
+    return {
+        type: 'DELETE_POS',
+        restaurantId: restaurantId,
+        positionId: positionId,
+    }
+}

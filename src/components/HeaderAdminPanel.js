@@ -11,9 +11,7 @@ const HeaderAdminPanel = () => {
             </div>
             <div className="header-admin__info">
                 <div className="header-admin__userinfo">
-                    <h2>NAZWA FIRMY</h2>
-                    <h2>NAZWA UŻYTKOWNIKA</h2>
-                    <button>Edytuj ustawienia konta</button>
+                    <h2>admin (token: 434234-cfsd53-fdsf764)</h2>
                 </div>
                 <div className="header-admin__userinfo">
                     <FaUserCircle className="header-admin__icon" />

@@ -1,4 +1,4 @@
-@import "./abstracts/colors.scss";
+@import './abstracts/colors.scss';
 
 .header-admin {
   display: flex;
@@ -19,7 +19,7 @@
   &__userinfo {
     display: flex;
     flex-flow: column;
-    justify-content: space-between;
+    justify-content: center;
 
     h2 {
       font-weight: bold;

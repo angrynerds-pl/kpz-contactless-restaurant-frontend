@@ -2,9 +2,8 @@ import {Link} from 'react-router-dom'
 
 import '../styles/restaurant-list.scss'
 
-const Restaurant = ({image,name,address,city,desc}, props) => {
-    // console.log(name,address,city,desc);;
-
+const Restaurant = ({image,name,address,city,desc,handleEditMenuClick}) => {
+    
     return (
         <li className="all-restaurants__restaurant restaurant">
             
