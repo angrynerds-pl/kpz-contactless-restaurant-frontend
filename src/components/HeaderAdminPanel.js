@@ -1,6 +1,5 @@
 import React from 'react';
 import {FaUserCircle} from 'react-icons/fa';
-
 import '../styles/header-admin.scss'
 
 const HeaderAdminPanel = () => {
@@ -11,7 +10,7 @@ const HeaderAdminPanel = () => {
             </div>
             <div className="header-admin__info">
                 <div className="header-admin__userinfo">
-                    <h2>admin (token: 434234-cfsd53-fdsf764)</h2>
+                    <h2>Radosław Łuckoś</h2>
                 </div>
                 <div className="header-admin__userinfo">
                     <FaUserCircle className="header-admin__icon" />

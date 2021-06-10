@@ -1,16 +1,5 @@
-import {v4 as uuid} from 'uuid';
 const addRestaurantReducer = (state = {
-    restaurants: [
-            {
-            id: uuid(),
-            address: 'Lotnicza 2',
-            city: 'Szymanów',
-            description: 'Zdrowe, smaczne posiłki',
-            name: 'Restauracja Kocioł',
-            menu: [
-                {id:uuid(),name:'Pierogi ruskie', price: 9.99},
-            ]},
-    ],
+    restaurants: [],
 }, action) => {
     switch(action.type){
         case 'ADD_RESTAURANT':
@@ -19,10 +8,15 @@ const addRestaurantReducer = (state = {
                 restaurants: [...state.restaurants, action.restaurant]
             };
         case 'EDIT_RESTAURANT':
-            const oldRestaurants = state.restaurants
-            const newRestaurants = oldRestaurants.filter(item => item.id !== action.restaurant.id).push(action.restaurant)
-            console.log(newRestaurants);
-            return state
+            const oldRestaurants = [...state.restaurants]
+            console.log(oldRestaurants );
+            console.log(action.id);
+            const newRestaurants = oldRestaurants.filter(rest => rest.id !== action.id);
+            newRestaurants.push(action.restaurant);
+            return {
+                ...state,
+                restaurants: newRestaurants
+            }
         case 'ADD_POS':
             const updatingRestaurantIndex = state.restaurants.findIndex((rest)=>{
                 return rest.id === action.restaurantId;
@@ -35,7 +29,6 @@ const addRestaurantReducer = (state = {
             const RestaurantIndex = state.restaurants.findIndex((rest)=>{
                 return rest.id === action.restaurantId;
             });
-            const deletedPosIndex = state.restaurants[RestaurantIndex].menu.findIndex((item)=> item.id === action.positionId);
 
             const oldMenu = state.restaurants[RestaurantIndex].menu;
             const newMenu = oldMenu.filter(item=>item.id !== action.positionId);

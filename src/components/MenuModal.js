@@ -2,7 +2,7 @@ import React, { useState,useRef } from 'react';
 import { useDispatch, useStore } from 'react-redux';
 import '../styles/menu-modal.scss';
 import {v4 as uuid} from 'uuid';
-import {MdDeleteForever} from 'react-icons/md'
+import {MdDeleteForever} from 'react-icons/md';
 import { addMenuPos, deleteMenuPos } from '../state/actions';
 
 

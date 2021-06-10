@@ -1,32 +1,33 @@
 export const logIn = (token) => {
     return {
         type: 'LOG_IN',
-        token: token,
+        token,
     }
 }
 export const addRestaurant = (restaurant) => {
     return {
         type: 'ADD_RESTAURANT',
-        restaurant: restaurant,
+        restaurant,
     }
 }
-export const editRestaurant = (restaurant) => {
+export const editRestaurant = (restaurant,id) => {
     return {
         type: 'EDIT_RESTAURANT',
-        restaurant: restaurant,
+        id,
+        restaurant,
     }
 }
 export const addMenuPos = (restaurantId,menuPos) => {
     return {
         type: 'ADD_POS',
-        restaurantId: restaurantId,
-        menuPos: menuPos,
+        restaurantId,
+        menuPos,
     }
 }
 export const deleteMenuPos = (restaurantId,positionId) => {
     return {
         type: 'DELETE_POS',
-        restaurantId: restaurantId,
-        positionId: positionId,
+        restaurantId,
+        positionId,
     }
 }

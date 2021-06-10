@@ -1,7 +1,5 @@
 import {useState, useEffect} from 'react';
-
-import RestaurantList from './RestaurantList'
-
+import RestaurantList from './RestaurantList';
 import '../styles/restaurant-list.scss'
 import { useStore } from 'react-redux';
 
@@ -48,7 +46,7 @@ const AllRestaurants = () => {
     return (
         <main className="all-restaurants">
             <h1>Twoje restauracje:</h1>
-            <RestaurantList restaurants={loadedRestaurants} />            
+            <RestaurantList restaurants={loadedRestaurants} setLoadedRestaurants={setLoadedRestaurants}/>            
         </main>
     );
 }

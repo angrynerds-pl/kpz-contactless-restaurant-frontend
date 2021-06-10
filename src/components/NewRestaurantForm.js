@@ -2,7 +2,7 @@ import {useRef} from 'react';
 import {v4 as uuid} from 'uuid';
 
 
-const NewRestaurantForm = ({onAddRestaurant,error}) => {
+const NewRestaurantForm = ({onAddRestaurant}) => {
     const nameInputRef = useRef()
     const streetInputRef = useRef()
     const descInputRef = useRef()
@@ -45,7 +45,6 @@ const NewRestaurantForm = ({onAddRestaurant,error}) => {
                         <label htmlFor="desc">Short restaurant description</label>
                         <textarea rows='3' cols='20' type="text" required id="desc" ref={descInputRef} />
                     </div>
-                    {error ? <p className='form__error'>{error}</p> : ''}
                     <button>Create Restaurant</button>
                     
             </form>

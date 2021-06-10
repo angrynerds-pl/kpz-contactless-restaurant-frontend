@@ -20,6 +20,8 @@
   border-radius: 20px;
   display: flex;
   flex-flow: row wrap;
+  align-items: center;
+  justify-content: center;
   * {
     display: flex;
     flex-flow: column nowrap;
@@ -96,5 +98,9 @@
         text-transform: none;
       }
     }
+  }
+  .resturant-form {
+    width: 100%;
+    border: 1px solid green;
   }
 }
