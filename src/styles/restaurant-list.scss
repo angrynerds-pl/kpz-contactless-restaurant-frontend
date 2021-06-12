@@ -1,0 +1,102 @@
+@import './abstracts/colors.scss';
+
+.all-restaurants {
+  background-color: $bg-primary;
+  height: calc(100vh - 10vh - 162px);
+  display: flex;
+  flex-flow: column;
+  h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 1.5rem;
+    color: $font-main;
+    margin-top: 50px;
+    margin-left: 50px;
+  }
+  &__list {
+    display: flex;
+    flex-flow: row;
+  }
+  &__addrestaurant {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: center;
+    width: 200px;
+    max-height: 300px;
+    background-color: #c4c4c4;
+    border-radius: 10px;
+    margin-left: 50px;
+    margin-top: 50px;
+    button {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 185px;
+      height: 40px;
+      background: $bg-scnd;
+      border-radius: 10px;
+    }
+  }
+  &__icon {
+    width: 200px;
+    height: 200px;
+    color: $bg-primary;
+  }
+  .restaurant {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px 0;
+    width: 200px;
+    height: 300px;
+    background-color: #c4c4c4;
+    border-radius: 10px;
+    margin: 50px 0 0 50px;
+    &__image {
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+    }
+    &__name {
+      text-align: center;
+      color: $font-scnd;
+      font-weight: bold;
+      font-size: 1.2rem;
+    }
+    &__desc {
+      text-align: center;
+      color: $font-scnd;
+      font-weight: bold;
+      font-size: 0.8rem;
+    }
+    &__address {
+      text-align: center;
+      font-size: 14px;
+      line-height: 16px;
+      color: #ef6351;
+    }
+    &__btn {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+      height: 40px;
+      border-radius: 10px;
+      cursor: pointer;
+    }
+    .edit_data {
+      background: $bg-scnd;
+      font-weight: bold;
+      font-size: 14px;
+      color: #37323e;
+    }
+    .edit_menu {
+      background-color: $details-first;
+      font-weight: bold;
+      font-size: 14px;
+      color: #bfbdc1;
+    }
+  }
+}

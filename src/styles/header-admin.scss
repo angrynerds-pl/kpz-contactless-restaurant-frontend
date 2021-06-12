@@ -1,0 +1,45 @@
+@import './abstracts/colors.scss';
+
+.header-admin {
+  display: flex;
+  background-color: $bg-scnd;
+  flex-flow: row nowrap;
+  justify-content: space-around;
+  align-items: center;
+  height: 162px;
+  color: $font-scnd;
+  &__info {
+    display: flex;
+    flex-flow: row;
+    h1 {
+      font-weight: bold;
+      font-size: 36px;
+    }
+  }
+  &__userinfo {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+
+    h2 {
+      font-weight: bold;
+      font-size: 24px;
+    }
+    button {
+      background: #ef6351;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 18px;
+      color: #c4c4c4;
+      margin-top: 15px;
+      width: 259px;
+      height: 30px;
+      text-transform: uppercase;
+    }
+  }
+  &__icon {
+    width: 100px;
+    height: 100px;
+    margin-left: 40px;
+  }
+}

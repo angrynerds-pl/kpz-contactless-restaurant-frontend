@@ -30,7 +30,7 @@ const AuthPage =() => {
             <button className={activeTab === `${url}` ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to={`${url}`}>Log in</Link></button>
             <button className={activeTab === `${url}/register` ? 'links__btn links__btn--active': 'links__btn'}><Link className='anchor' to={`${url}/register`}>Sign Up</Link></button>
           </section>
-          <section>
+          <section className='form-section'>
             <Switch>
               <Route path={`${url}/register`} component={RegisterForm}/>
               <Route path={`${url}/login`}>
